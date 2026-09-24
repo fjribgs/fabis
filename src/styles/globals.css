@@ -8,6 +8,10 @@
 @theme {
   --font-bricolage: "Bricolage Grotesque", sans-serif;
   --font-outfit: "Outfit", sans-serif;
+  --color-greenblue: #42BAD2;
+  --color-dark-greenblue: #2386AD;
+  --color-dark-orange: #D27818;
+  --color-yellow-mango: #E7C104;
 }
 
 @theme inline {
