@@ -1,103 +1,81 @@
-import { headers } from "next/headers";
-import Link from "next/link";
-import { redirect } from "next/navigation";
+// import { headers } from "next/headers";
+// import Link from "next/link";
+// import { redirect } from "next/navigation";
 
-import { LatestPost } from "@/app/_components/post";
-import { auth } from "@/server/better-auth";
+// import { LatestPost } from "@/app/_components/post";
+// import { auth } from "@/server/better-auth";
 import { getSession } from "@/server/better-auth/server";
 import { api, HydrateClient } from "@/trpc/server";
+import Navbar from "./_components/navbar";
+import Image from "next/image";
+import Link from "next/link";
+import { GraduationCap, ShieldCheck, Mosque } from "lucide-react";
 
 export default async function Home() {
-  const hello = await api.post.hello({ text: "from tRPC" });
   const session = await getSession();
 
   if (session) {
     void api.post.getLatest.prefetch();
   }
 
+  const highlights = [
+    { label: "Akreditasi A BAN-S/M", icon: <ShieldCheck className="size-4"/>},
+    { label: "Kemenag Terdaftar", icon: <Mosque className="size-4"/>},
+    { label: "Kurikulum Merdeka + Ma'had", icon: <GraduationCap className="size-4"/>}
+  ]
+
   return (
     <HydrateClient>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-        <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
-          <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-            Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
+      <Navbar />
+
+      <section className="flex max-md:flex-col gap-10 px-20 max-md:px-7 max-md:py-30 py-40 items-center justify-center min-h-screen">
+        <div className="flex flex-6 flex-col gap-7 max-md:gap-6 ">
+          <span className="font-medium text-dark-orange rounded-[999] border-dark-orange border px-3 py-1.5 w-fit">
+            PPDB 2027/2028 Telah Dibuka
+          </span>
+          <h1 className="font-bricolage font-bold text-7xl max-md:text-6xl text-dark-greenblue">
+            Fathul Baari <br/> Islamic School
           </h1>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-            <Link
-              className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-              href="https://create.t3.gg/en/usage/first-steps"
-              target="_blank"
-            >
-              <h3 className="text-2xl font-bold">First Steps →</h3>
-              <div className="text-lg">
-                Just the basics - Everything you need to know to set up your
-                database and authentication.
-              </div>
+          <p className="text-md">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
+
+          <div className="flex gap-6 max-md:gap-2 max-md:flex-col w-fit">
+            <Link href={"#"}
+            className="flex gap-3 shadow-md font-bricolage bg-dark-greenblue text-lg max-md:text-sm items-center text-white px-8 py-2.5 rounded-[999] 
+            inset-shadow-red-100 cursor-pointer hover:bg-greenblue duration-200 transition-all">
+              <GraduationCap />
+              Daftar Sekarang
             </Link>
-            <Link
-              className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-              href="https://create.t3.gg/en/introduction"
-              target="_blank"
-            >
-              <h3 className="text-2xl font-bold">Documentation →</h3>
-              <div className="text-lg">
-                Learn more about Create T3 App, the libraries it uses, and how
-                to deploy it.
-              </div>
+
+            <Link href={"#"}
+            className="flex gap-3 shadow-md font-bricolage hover:bg-dark-greenblue text-lg max-md:text-sm items-center text-white px-8 py-2.5 rounded-[999] 
+            inset-shadow-red-100 cursor-pointer bg-greenblue duration-200 transition-all">
+              <GraduationCap />
+              Daftar Sekarang
             </Link>
           </div>
-          <div className="flex flex-col items-center gap-2">
-            <p className="text-2xl text-white">
-              {hello ? hello.greeting : "Loading tRPC query..."}
-            </p>
 
-            <div className="flex flex-col items-center justify-center gap-4">
-              <p className="text-center text-2xl text-white">
-                {session && <span>Logged in as {session.user?.name}</span>}
-              </p>
-              {!session ? (
-                <form>
-                  <button
-                    className="rounded-full bg-white/10 px-10 py-3 font-semibold no-underline transition hover:bg-white/20"
-                    formAction={async () => {
-                      "use server";
-                      const res = await auth.api.signInSocial({
-                        body: {
-                          provider: "github",
-                          callbackURL: "/",
-                        },
-                      });
-                      if (!res.url) {
-                        throw new Error("No URL returned from signInSocial");
-                      }
-                      redirect(res.url);
-                    }}
-                  >
-                    Sign in with Github
-                  </button>
-                </form>
-              ) : (
-                <form>
-                  <button
-                    className="rounded-full bg-white/10 px-10 py-3 font-semibold no-underline transition hover:bg-white/20"
-                    formAction={async () => {
-                      "use server";
-                      await auth.api.signOut({
-                        headers: await headers(),
-                      });
-                      redirect("/");
-                    }}
-                  >
-                    Sign out
-                  </button>
-                </form>
-              )}
-            </div>
+          <div className="flex max-md:flex-col gap-4">
+            {highlights.map((item) => (
+              <span key={item.label} className="flex text-xs gap-1.5 items-center">
+                {item.icon}
+                {item.label}
+              </span>
+            ))}
           </div>
-
-          {session?.user && <LatestPost />}
         </div>
-      </main>
+
+        <div className="flex flex-6">
+          <Image 
+            src="/hero.png"
+            width={800}
+            height={800}
+            alt=""
+            className="rounded-3xl"/>
+        </div>
+      </section>
+
     </HydrateClient>
   );
 }
