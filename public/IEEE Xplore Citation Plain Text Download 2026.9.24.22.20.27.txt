@@ -1,0 +1,3 @@
+A. Mutemi and F. Bacao, "E-Commerce Fraud Detection Based on Machine Learning Techniques: Systematic Literature Review," in Big Data Mining and Analytics, vol. 7, no. 2, pp. 419-444, June 2024, doi: 10.26599/BDMA.2023.9020023.
+keywords: {Surveys;Industries;Systematics;Reviews;Bibliographies;Focusing;Machine learning;E-commerce;fraud detection;Machine Learning (ML);systematic review;organized retail fraud},
+
