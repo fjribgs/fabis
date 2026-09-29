@@ -30,7 +30,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${geist.variable} ${bricolage.variable} ${outfit.variable}`}>
+    <html lang="en" className={`scroll-smooth ${geist.variable} ${bricolage.variable} ${outfit.variable}`}>
       <body>
         <TRPCReactProvider>{children}</TRPCReactProvider>
       </body>

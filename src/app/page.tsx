@@ -3,7 +3,8 @@
 // import { redirect } from "next/navigation";
 
 // import { LatestPost } from "@/app/_components/post";
-// import { auth } from "@/server/better-auth";
+// import { auth } from "@/server/better-auth"; 
+
 import { getSession } from "@/server/better-auth/server";
 import { api, HydrateClient } from "@/trpc/server";
 import Navbar from "./_components/navbar";
@@ -16,7 +17,11 @@ import {
   MapPinned, 
   Clock,
   Phone,
-  Mail
+  Mail,
+  Megaphone,
+  Download,
+  SquareText,
+  ListCheck
 } from "lucide-react";
 
 export default async function Home() {
@@ -36,6 +41,29 @@ export default async function Home() {
     { icon: <Clock className="size-4.5"/>, label: "Jam Operasional", desc:"Senin - Sabtu", desc2: "07.30 - 16.00 WIB"},
     { icon: <Phone className="size-4.5"/>, label: "Telepon Kantor", desc:"(021) 8899-2345", desc2: "0812-3456-7890 (WA)"},
     { icon: <Mail className="size-4.5"/>, label: "Surel Resmi", desc:"info@fabis.sch.id", desc2: "ppdb@fabis.sch.id"},
+  ]
+
+  const ppdb = [
+    { id: "01", 
+      title: "Registrasi Online", 
+      description:"Mengisi formulir biodata santri dan wali secara online serta mengunggah berkas syarat administratif.",
+      color: "bg-[#006384]/15"
+    },
+    { id: "02", 
+      title: "Tes Observasi & Al-Qur'an", 
+      description:"Uji kelayakan membaca Al-Qur'an (Tahsin/Tahfidz), wawancara komitmen wali santri, dan psikotes pemetaan minat bakat.",
+      color: "bg-[#8C4B00]/15"
+    },
+    { id: "03", 
+      title: "Pengumuman Kelulusan", 
+      description:"Hasil seleksi diumumkan melalui website resmi dan notifikasi WhatsApp langsung ke nomor wali santri.",
+      color: "bg-[#006384]/15"
+    },
+    { id: "04", 
+      title: "Daftar Ulang & Seragam  ", 
+      description:"Penyelesaian administrasi masuk, pengukuran seragam resmi, dan orientasi walisantri & mahasantri baru.",
+      color: "bg-[#8C4B00]/15"
+    }
   ]
 
   return (
@@ -90,7 +118,64 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="flex flex-col gap-4 px-18 max-md:px-7 max-md:py-30 py-40 min-h-screen">
+      <section id="ppdb" 
+        className="flex flex-col gap-4 px-18 max-md:px-7 max-md:py-30 py-40 min-h-screen">
+        <div className="flex w-full max-lg:flex-col gap-10 h-full justify-between items-end max-lg:items-start">
+          <div className="flex flex-col gap-4">
+            <span className="flex gap-2 font-outfit font-semibold text-dark-orange items-center">
+              <Megaphone />
+              PENERIMAAN PESERTA DIDIK BARU TA 2027/2028
+            </span>
+
+            <h2 className="font-bold text-4xl font-bricolage text-dark-greenblue">Informasi & Pendaftaran Siswa Baru</h2>
+
+            <p className="text-text font-normal font-outfit">
+              Proses seleksi transparan dan berbasis pembinaan potensi santri.
+              Pilih jenjang pendidikan SMP IT  Fathul Baari.
+            </p>
+          </div>
+
+          <div className="flex">
+            <div className="flex gap-3 max-md:gap-2 max-md:flex-col h-fit w-fit">
+              <Link href={"#"}
+              className="flex gap-3 shadow-md font-bricolage bg-dark-greenblue text-lg max-md:text-sm items-center text-white px-8 py-2.5 
+              rounded-xl  inset-shadow-red-100 cursor-pointer hover:bg-greenblue duration-200 transition-all">
+                <Download />
+                Unduh Pamflet
+              </Link>
+
+              <Link href={"#"}
+              className="flex gap-3 shadow-md font-bricolage hover:bg-dark-greenblue text-lg max-md:text-sm items-center text-white px-8 py-2.5 rounded-xl 
+              inset-shadow-red-100 cursor-pointer bg-greenblue duration-200 transition-all">
+                <SquareText />
+                Isi Formulir Online
+              </Link>
+            </div>
+          </div>
+        </div>
+        
+        <div className="grid grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-3 w-full max-sm:flex-col mt-4">
+            {ppdb.map((item) => (
+              <div key={item.id}
+              className="flex flex-col w-full gap-8 bg-white px-6 py-6 rounded-xl shadow-sm">
+                <div className={`${item.color} w-fit py-3 px-4 rounded-sm font-bold font-bricolage`}>
+                  {item.id}
+                </div>
+                <div className="flex flex-col gap-2">
+                  <h4 className="font-bricolage font-medium text-xl">
+                    {item.title}
+                  </h4>
+                  <p className="text-text text-md">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+        </div>
+      </section>
+
+      <section id="location" 
+        className="flex flex-col gap-4 px-18 max-md:px-7 max-md:py-30 py-40 min-h-screen">
         <span className="flex gap-2 font-outfit font-semibold text-dark-orange items-center">
           <MapPinned />
           AYO KUNJUNGI KAMI DI FATHUL BAARI ISLAMIC SCHOOL
@@ -98,7 +183,7 @@ export default async function Home() {
 
         <h2 className="font-bold text-4xl font-bricolage text-dark-greenblue">Lokasi Sekolah FABIS</h2>
 
-        <p className="text-text font-normal font-outfit ">
+        <p className="text-text font-normal font-outfit">
           Kami menyambut kehadiran Ayah/Bunda untuk melihat langsung suasana pembelajaran, sarana mahad,
           dan berdiskusi dengan tim akademik kami.
         </p>
