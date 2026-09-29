@@ -21,7 +21,8 @@ import {
   Megaphone,
   Download,
   SquareText,
-  ListCheck
+  ListCheck,
+  CircleCheckBig
 } from "lucide-react";
 
 export default async function Home() {
@@ -64,6 +65,14 @@ export default async function Home() {
       description:"Penyelesaian administrasi masuk, pengukuran seragam resmi, dan orientasi walisantri & mahasantri baru.",
       color: "bg-[#8C4B00]/15"
     }
+  ]
+
+  const persyaratanSantri = [
+    "Fotokopi Akta Kelahiran dan Kartu Keluarga (KK) 2 rangkap",
+    "Pas foto formal santri berpakaian rapih ukuran 3x4 (4 lembar, latar biru)",
+    "Fotokopi Rapor 2 semester terakhir yang telah dilegalisir",
+    "Surat Keterangan Sehat & Bebas Hepatitis/TBC dari dokter resmi",
+    "Komitmen bersedia tinggal di asrama dan menaati tata tertib Ma'had"
   ]
 
   return (
@@ -145,8 +154,8 @@ export default async function Home() {
               </Link>
 
               <Link href={"#"}
-              className="flex gap-3 shadow-md font-bricolage hover:bg-dark-greenblue text-lg max-md:text-sm items-center text-white px-8 py-2.5 rounded-xl 
-              inset-shadow-red-100 cursor-pointer bg-greenblue duration-200 transition-all">
+              className="flex gap-3 shadow-md font-bricolage hover:bg-dark-greenblue text-lg max-md:text-sm items-center text-white px-8 
+              py-2.5 rounded-xl inset-shadow-red-100 cursor-pointer bg-greenblue duration-200 transition-all">
                 <SquareText />
                 Isi Formulir Online
               </Link>
@@ -171,6 +180,26 @@ export default async function Home() {
                 </div>
               </div>
             ))}
+        </div>
+
+        <div className="flex flex-col gap-2 bg-white rounded-2xl shadow-sm p-6">
+          <div className="flex gap-3.5 items-center">
+            <span className="bg-[#006384]/15 p-3 rounded-md h-fit">
+              <ListCheck />
+            </span>
+            <div className="flex flex-col">
+              <h4 className="font-bricolage text-2xl font-bold text-dark-greenblue">Persyaratan Calon Santri</h4>
+              <p className="text-text">Dokumen fisik & digital yang wajib dipersiapkan</p>
+            </div>
+          </div>
+          <div className="flex flex-col gap-1.5 mt-3">
+            {persyaratanSantri.map((item, index) => (
+              <div className="flex gap-2 items-center text-text" key={index}>
+                <CircleCheckBig className="text-dark-greenblue size-4"/>
+                {item}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
