@@ -11,8 +11,8 @@ export default function Navbar() {
   const navItems = [
     { label: "Beranda", href: "/"},
     { label: "Tentang Kami", href: "#"},
-    { label: "PPDB", href:"#"},
-    { label: "Lokasi", href:"#"}
+    { label: "PPDB", href:"#ppdb"},
+    { label: "Lokasi", href:"#location"}
   ]
 
   return (
