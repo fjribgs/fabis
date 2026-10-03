@@ -81,7 +81,7 @@ export default async function Home() {
 
       <section className="flex max-md:flex-col gap-10 px-18 max-md:px-7 max-md:py-30 py-40 items-center justify-center min-h-screen">
         <div className="flex flex-6 flex-col gap-7 max-md:gap-6 ">
-          <span className="font-medium text-dark-orange rounded-[999] border-dark-orange border px-3 py-1.5 w-fit">
+          <span className="font-medium text-dark-orange rounded-full border-dark-orange border px-3 py-1.5 w-fit">
             PPDB 2027/2028 Telah Dibuka
           </span>
           <h1 className="font-bricolage font-bold text-7xl max-md:text-6xl text-dark-greenblue">
