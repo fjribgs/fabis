@@ -7,6 +7,7 @@
 
 import { getSession } from "@/server/better-auth/server";
 import { api, HydrateClient } from "@/trpc/server";
+import Footer from "./_components/footer";
 import Navbar from "./_components/navbar";
 import Image from "next/image";
 import Link from "next/link";
@@ -238,6 +239,8 @@ export default async function Home() {
             ))}
         </div>
       </section>
+
+      <Footer />
 
     </HydrateClient>
   );
