@@ -56,7 +56,7 @@ export default function NewsSection({
         </div>
       </div>
 
-      <div className="grid-cols-4 max-md:grid-cols-2 max-sm:grid-cols-1 grid gap-4 w-full mt-2">
+      <div className="grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 grid gap-4 w-full mt-2">
         {news.map((item) => (
           <Link href={`/news/${item.id}`}
             key={item.id}

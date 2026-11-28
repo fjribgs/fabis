@@ -40,7 +40,7 @@ export default function NewsList({ news }: { news: NewsItem[] }) {
 
   return (
     <div className="flex flex-col gap-10 mt-8 mb-18">
-      <div className="grid-cols-4 max-md:grid-cols-2 max-sm:grid-cols-1 grid gap-4 w-full">
+      <div className="grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 grid gap-4 w-full">
         {paginatedNews.map((item) => (
           <Link
             href={`/news/${item.id}`}

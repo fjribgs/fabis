@@ -27,7 +27,7 @@ export default function Navbar() {
         />
       </Link>
 
-      <div className="text-md text-dark-greenblue absolute left-1/2 flex -translate-x-1/2 gap-3 font-medium max-md:hidden">
+      <div className="text-md text-dark-greenblue absolute left-1/2 flex -translate-x-1/2 gap-3 font-medium max-lg:hidden">
         {navItems.map((item) => (
           <Link
             key={item.href}
@@ -39,7 +39,7 @@ export default function Navbar() {
         ))}
       </div>
 
-      <div className="max-md:hidden">
+      <div className="max-lg:hidden">
         <Link
           href="https://wa.me/6281211066905"
           className="font-bricolage bg-dark-greenblue hover:bg-greenblue inset-shadow-sm inset-shadow-indigo-200 flex cursor-pointer gap-2 rounded-[999] px-8 py-2.5 text-lg text-white transition-all duration-200"
@@ -50,7 +50,7 @@ export default function Navbar() {
       </div>
 
       {isOpen && (
-        <div className="max-md:flex hidden text-dark-greenblue absolute top-18 right-0 w-full flex-col items-end gap-3.5 bg-white px-4 py-8 text-2xl font-medium">
+        <div className="max-lg:flex hidden text-dark-greenblue absolute top-18 right-0 w-full flex-col items-end gap-3.5 bg-white px-4 py-8 text-2xl font-medium">
           {navItems.map((item) => (
             <Link
               key={item.href}
@@ -73,7 +73,7 @@ export default function Navbar() {
 
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="hidden max-md:block"
+        className="hidden max-lg:block"
       >
         <Menu />
       </button>
